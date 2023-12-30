@@ -53,6 +53,36 @@ func (c *Context) Int(v int, typ *Sort) *AST {
 	}
 }
 
+// Uint creates an unsigned integer type.
+//
+// Maps: Z3_mk_unsigned_int
+func (c *Context) Uint(v uint, typ *Sort) *AST {
+	return &AST{
+		rawCtx: c.raw,
+		rawAST: C.Z3_mk_unsigned_int(c.raw, C.uint32_t(v), typ.rawSort),
+	}
+}
+
+// Int64 creates a long integer type (64 bit).
+//
+// Maps: Z3_mk_int64
+func (c *Context) Int64(v int64, typ *Sort) *AST {
+	return &AST{
+		rawCtx: c.raw,
+		rawAST: C.Z3_mk_int64(c.raw, C.int64_t(v), typ.rawSort),
+	}
+}
+
+// Uint64 creates an unsigned long integer type (64 bit).
+//
+// Maps: Z3_mk_unsigned_int64
+func (c *Context) Uint64(v uint64, typ *Sort) *AST {
+	return &AST{
+		rawCtx: c.raw,
+		rawAST: C.Z3_mk_unsigned_int64(c.raw, C.uint64_t(v), typ.rawSort),
+	}
+}
+
 // True creates the value "true".
 //
 // Maps: Z3_mk_true
@@ -83,4 +113,22 @@ func (a *AST) Int() int {
 	var dst C.int
 	C.Z3_get_numeral_int(a.rawCtx, a.rawAST, &dst)
 	return int(dst)
+}
+
+func (a *AST) Uint() uint {
+	var dst C.uint32_t
+	C.Z3_get_numeral_uint(a.rawCtx, a.rawAST, &dst)
+	return uint(dst)
+}
+
+func (a *AST) Int64() int64 {
+	var dst C.int64_t
+	C.Z3_get_numeral_int64(a.rawCtx, a.rawAST, &dst)
+	return int64(dst)
+}
+
+func (a *AST) Uint64() uint64 {
+	var dst C.uint64_t
+	C.Z3_get_numeral_uint64(a.rawCtx, a.rawAST, &dst)
+	return uint64(dst)
 }

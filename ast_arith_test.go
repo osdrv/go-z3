@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestASTAdd(t *testing.T) {
+func TestASTAdd_Int(t *testing.T) {
 	config := NewConfig()
 	defer config.Close()
 
@@ -25,7 +25,7 @@ func TestASTAdd(t *testing.T) {
 	}
 }
 
-func TestASTMul(t *testing.T) {
+func TestASTMul_Int(t *testing.T) {
 	config := NewConfig()
 	defer config.Close()
 
@@ -46,7 +46,7 @@ func TestASTMul(t *testing.T) {
 	}
 }
 
-func TestASTSub(t *testing.T) {
+func TestASTSub_Int(t *testing.T) {
 	config := NewConfig()
 	defer config.Close()
 
@@ -67,7 +67,7 @@ func TestASTSub(t *testing.T) {
 	}
 }
 
-func TestASTLt(t *testing.T) {
+func TestASTLt_Int(t *testing.T) {
 	config := NewConfig()
 	defer config.Close()
 	ctx := NewContext(config)
@@ -86,7 +86,7 @@ func TestASTLt(t *testing.T) {
 	}
 }
 
-func TestASTLe(t *testing.T) {
+func TestASTLe_Int(t *testing.T) {
 	config := NewConfig()
 	defer config.Close()
 	ctx := NewContext(config)
@@ -105,7 +105,7 @@ func TestASTLe(t *testing.T) {
 	}
 }
 
-func TestASTGt(t *testing.T) {
+func TestASTGt_Int(t *testing.T) {
 	config := NewConfig()
 	defer config.Close()
 	ctx := NewContext(config)
@@ -124,7 +124,7 @@ func TestASTGt(t *testing.T) {
 	}
 }
 
-func TestASTGe(t *testing.T) {
+func TestASTGe_Int(t *testing.T) {
 	config := NewConfig()
 	defer config.Close()
 	ctx := NewContext(config)
